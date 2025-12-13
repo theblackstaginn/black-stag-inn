@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact | The Black Stag Inn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact The Black Stag Inn for booking questions, upgrades, or general inquiries.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="siteHeader">
+  <div class="container headerInner">
+    <a href="index.html" class="brand">
+      <img src="assets/black-stag-logo.jpg" alt="The Black Stag Inn logo" class="logo">
+      <div class="brandText">
+        <span class="brandName">The Black Stag Inn</span>
+        <span class="brandSub">Dahlonega, Georgia</span>
+      </div>
+    </a>
+
+    <button id="menuBtn" class="menuBtn" aria-label="Open menu">Menu</button>
+
+    <nav id="navLinks" class="links" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="suites.html">Suites</a>
+      <a href="coffeehouse.html">Coffeehouse</a>
+      <a href="policies.html">Policies</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="cta">Check Availability</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="kicker">Contact</span>
+    <h1>Booking questions? Upgrades? We’ve got you.</h1>
+    <p class="lead">
+      Reach out for availability, apothecary offerings, and optional dinner package upgrades.
+    </p>
+    <div class="actions">
+      <a href="suites.html" class="btn">Explore Suites</a>
+      <a href="policies.html" class="btn">Policies</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Send a message</h2>
+
+    <!-- This is a visual form only (no backend yet) -->
+    <form class="form" onsubmit="event.preventDefault(); alert('Form submitted (demo). We can wire this to email later.');">
+      <input class="input" type="text" name="name" placeholder="Your name" required>
+      <input class="input" type="email" name="email" placeholder="Your email" required>
+      <input class="input" type="text" name="dates" placeholder="Desired dates (optional)">
+      <textarea name="message" placeholder="Message (availability, upgrades, questions)..." required></textarea>
+      <button class="btn primary" type="submit">Send</button>
+    </form>
+
+    <p class="small" style="margin-top:12px;">
+      We can connect this form to a real inbox when you’re ready (simple options: Formspree, Netlify Forms, or a custom domain email).
+    </p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© The Black Stag Inn · Dahlonega, Georgia</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
