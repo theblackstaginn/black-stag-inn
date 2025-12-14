@@ -430,4 +430,34 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-body { outline: 8px solid red !important;}
+a.cta,
+a.button,
+button,
+.button {
+  background:
+    linear-gradient(135deg,#c27a3a 0%,#b36a2e 40%,#8b4d1f 75%,#d08b4c 100%);
+  color: #1a1209;
+  border: 1.5px solid #7a421a;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 3px 10px rgba(0,0,0,0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.2s ease;
+}
+
+a.cta:hover,
+a.button:hover,
+button:hover,
+.button:hover {
+  filter: brightness(1.08);
+}
+
+a.cta:active,
+a.button:active,
+button:active,
+.button:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.25);
+}
+
