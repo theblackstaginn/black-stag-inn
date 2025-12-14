@@ -4,65 +4,161 @@
   <meta charset="utf-8">
   <title>Coffeehouse | The Black Stag Inn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A warm, mythic coffeehouse experience at The Black Stag Inn.">
+  <meta name="description" content="Stag & Stone Coffeehouse & Tavern at The Black Stag Inn in Dahlonega, Georgia. Coffee, comfort, and medieval tavern atmosphere.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<header class="siteHeader">
-  <div class="container headerInner">
-    <a href="index.html" class="brand">
-      <img src="assets/black-stag-logo.jpg" alt="The Black Stag Inn logo" class="logo">
-      <div class="brandText">
-        <span class="brandName">The Black Stag Inn</span>
-        <span class="brandSub">Dahlonega, Georgia</span>
-      </div>
-    </a>
+  <!-- =========================
+       HEADER / NAV
+  ========================== -->
+  <header class="siteHeader">
+    <div class="container headerInner">
 
-    <button id="menuBtn" class="menuBtn" aria-label="Open menu">Menu</button>
+      <a href="index.html" class="brand">
+        <img src="assets/black-stag-logo.jpg" alt="The Black Stag Inn">
+        <div class="brandText">
+          <span class="brandName">The Black Stag Inn</span>
+          <span class="brandSub">Dahlonega, Georgia</span>
+        </div>
+      </a>
 
-    <nav id="navLinks" class="links" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="suites.html">Suites</a>
-      <a href="coffeehouse.html">Coffeehouse</a>
-      <a href="policies.html">Policies</a>
-      <a href="contact.html">Contact</a>
-      <a href="contact.html" class="cta">Check Availability</a>
-    </nav>
-  </div>
-</header>
+      <nav id="navLinks" class="links" aria-label="Primary navigation">
+        <a class="navBtn" href="index.html">Home</a>
+        <a class="navBtn" href="suites.html">Suites</a>
+        <a class="navBtn active" href="coffeehouse.html">Coffeehouse</a>
+        <a class="navBtn" href="policies.html">Policies</a>
+        <a class="navBtn" href="contact.html">Contact</a>
+        <a class="navBtn primary" href="contact.html">Check Availability</a>
+      </nav>
 
-<main class="container">
-  <section class="hero">
-    <span class="kicker">Coffeehouse</span>
-    <h1>Warm, crafted, and quietly mythic.</h1>
-    <p class="lead">
-      A calm place for slow mornings, thoughtful conversation, and simple comfort—
-      designed for guests and locals.
-    </p>
-    <div class="actions">
-      <a href="contact.html" class="btn primary">Ask a Question</a>
-      <a href="suites.html" class="btn">Explore Suites</a>
     </div>
-  </section>
-</main>
+  </header>
 
-<section class="section">
-  <div class="container">
-    <h2>What to expect</h2>
-    <ul class="list">
-      <li><strong>Espresso & brewed coffee</strong> crafted with consistency and care.</li>
-      <li><strong>Seasonal specials</strong> with an old-world, story-forward vibe.</li>
-      <li><strong>Calm atmosphere</strong>—a place that invites you to stay a while.</li>
-    </ul>
-  </div>
-</section>
+  <main>
 
-<footer>
-  <div class="container">© The Black Stag Inn · Dahlonega, Georgia</div>
-</footer>
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="hero">
+      <div class="container">
 
-<script src="script.js"></script>
+        <p class="eyebrow">Stag & Stone • Coffeehouse & Tavern • Dahlonega, Georgia</p>
+
+        <h1>Coffee, candlelight, and comfort.</h1>
+
+        <p class="heroText">
+          Stag & Stone is the gathering place—crafted like a medieval tavern without the theme-park energy.
+          Expect warm light, rich textures, and drinks designed for slow mornings and lingering evenings.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="contact.html">Hours & Location</a>
+          <a class="button ghost" href="contact.html">Ask a Question</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         EXPERIENCE
+    ========================== -->
+    <section class="section">
+      <div class="container">
+
+        <h2>The Experience</h2>
+        <p>
+          The goal is simple: make it feel like a place you’ve been before… in another life.
+          Cozy seating, handcrafted details, and an atmosphere that encourages conversation and calm.
+        </p>
+
+        <div class="cardGrid">
+          <div class="card">
+            <h3>Morning Ritual</h3>
+            <p>Espresso, pour-overs, seasonal flavors, and the kind of quiet that resets your brain.</p>
+          </div>
+
+          <div class="card">
+            <h3>Afternoon Gatherings</h3>
+            <p>A space for reading, sketching, meeting friends, or planning your day in the mountains.</p>
+          </div>
+
+          <div class="card">
+            <h3>Evening Tavern Mood</h3>
+            <p>Warm lighting, rich tones, and drinks that feel like a story. Calm, not chaotic.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         MENU PREVIEW
+    ========================== -->
+    <section class="section">
+      <div class="container">
+
+        <h2>Menu Preview</h2>
+        <p>
+          A small, intentional menu—crafted to be memorable without being complicated.
+          (Full menu details will be posted here as we finalize seasonal offerings.)
+        </p>
+
+        <div class="cardGrid">
+          <div class="card">
+            <h3>Coffee & Espresso</h3>
+            <p>Classics, specialty lattes, and rotating seasonal drinks.</p>
+          </div>
+
+          <div class="card">
+            <h3>Teas & Elixirs</h3>
+            <p>Herbal blends and calming cups built for slow sips.</p>
+          </div>
+
+          <div class="card">
+            <h3>Small Bites</h3>
+            <p>Light pairings designed to match the mood (and the drinks).</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         CTA
+    ========================== -->
+    <section class="section">
+      <div class="container">
+
+        <h2>Find Us</h2>
+        <p>
+          Visiting Dahlonega? Come in, warm up, and stay awhile.
+          If you’re staying at the Inn, Stag & Stone is part of the experience.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="contact.html">Hours & Location</a>
+          <a class="button ghost" href="suites.html">Explore the Suites</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="siteFooter">
+    <div class="container">
+      <p>© The Black Stag Inn · Dahlonega, Georgia</p>
+    </div>
+  </footer>
+
 </body>
 </html>
+
 
