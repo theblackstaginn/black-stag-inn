@@ -16,15 +16,55 @@
 </head>
 <body>
 
-<header class="siteHeader">
-  <div class="container headerInner">
-    <a href="index.html" class="brand">
-      <img src="assets/black-stag-logo.jpg" alt="The Black Stag Inn logo" class="logo">
-      <div class="brandText">
-        <span class="brandName">The Black Stag Inn</span>
-        <span class="brandSub">Dahlonega, Georgia</span>
-      </div>
-    </a>
+/* =========================
+   COPPER NAV BUTTONS
+========================= */
+nav.links a {
+  background:
+    linear-gradient(
+      135deg,
+      #c27a3a 0%,
+      #b36a2e 40%,
+      #8b4d1f 75%,
+      #d08b4c 100%
+    );
+  color: #1a1209;
+  border: 1.5px solid #7a421a;
+  padding: 0.45rem 0.9rem;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  display: inline-block;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    0 3px 10px rgba(0,0,0,0.35);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.2s ease;
+}
+
+/* Hover = warmth */
+nav.links a:hover {
+  filter: brightness(1.08);
+}
+
+/* Active = weight */
+nav.links a:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.35),
+    0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Optional: slightly emphasize the main CTA */
+nav.links a.cta {
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+}
+
+
 
   
 
@@ -83,5 +123,6 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
