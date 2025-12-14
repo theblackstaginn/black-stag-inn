@@ -1,5 +1,6 @@
+
 /* =========================
-   BASE
+   RESET / BASE
 ========================= */
 *,
 *::before,
@@ -12,11 +13,18 @@ html, body {
   padding: 0;
 }
 
+/* =========================
+   BODY / ATMOSPHERE
+========================= */
 body {
   font-family: "Cormorant Garamond", serif;
-  background: #0e0e0e;
   color: #e6e2dc;
   line-height: 1.6;
+
+  /* subtle ambient firelight */
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%),
+    #0e0e0e;
 }
 
 a {
@@ -34,10 +42,34 @@ a {
 }
 
 /* =========================
-   HEADER
+   TYPOGRAPHY
+========================= */
+h1, h2, h3 {
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  max-width: 720px;
+  opacity: 0.92;
+}
+
+/* =========================
+   HEADER / BRAND
 ========================= */
 .siteHeader {
-  background: #0e0e0e;
+  background: rgba(14,14,14,0.85);
+  backdrop-filter: blur(2px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -63,7 +95,6 @@ a {
 }
 
 .brandName {
-  letter-spacing: 0.08em;
   font-size: 1.25rem;
 }
 
@@ -80,19 +111,26 @@ nav.links {
   gap: 0.6rem;
 }
 
-.navBtn {
-  background: linear-gradient(
-    135deg,
-    #c27a3a 0%,
-    #b36a2e 40%,
-    #8b4d1f 75%,
-    #d08b4c 100%
-  );
+.navBtn,
+.button {
+  background:
+    linear-gradient(
+      135deg,
+      #c27a3a 0%,
+      #b36a2e 40%,
+      #8b4d1f 75%,
+      #d08b4c 100%
+    );
   color: #1a1209;
   border: 1.5px solid #7a421a;
-  padding: 0.45rem 0.9rem;
+
+  /* forged, softened edges */
+  border-radius: 6px;
+
+  padding: 0.55rem 1rem;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
+
   display: inline-block;
   cursor: pointer;
 
@@ -106,21 +144,87 @@ nav.links {
     filter 0.2s ease;
 }
 
-.navBtn:hover {
+/* Hover = warmth */
+.navBtn:hover,
+.button:hover {
   filter: brightness(1.08);
 }
 
-.navBtn:active {
+/* Active = weight */
+.navBtn:active,
+.button:active {
   transform: translateY(1px);
   box-shadow:
     inset 0 2px 4px rgba(0,0,0,0.35),
     0 2px 6px rgba(0,0,0,0.25);
 }
 
-/* Primary CTA emphasis */
+/* Primary emphasis */
 .navBtn.primary {
-  padding: 0.55rem 1.1rem;
+  padding: 0.65rem 1.15rem;
   font-weight: 600;
+}
+
+/* =========================
+   SECTIONS / RHYTHM
+========================= */
+section {
+  padding: 4rem 0;
+}
+
+section:not(.hero) {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  padding: 5rem 0 6rem;
+}
+
+.hero .eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  margin-bottom: 1rem;
+}
+
+.heroText {
+  margin: 1.25rem 0 2rem;
+}
+
+/* =========================
+   CARDS / DEPTH
+========================= */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.5rem;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.siteFooter {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 2.5rem 0;
+  font-size: 0.85rem;
+  opacity: 0.7;
 }
 
 /* =========================
@@ -131,8 +235,11 @@ nav.links {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
-}
 
+  h1 {
+    font-size: 2rem;
+  }
+}
 
 
 
