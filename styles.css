@@ -1,259 +1,1094 @@
+/* =========================================
+   BLACK STAG INN — styles.css (LOCKED v2.0 CLEAN REBUILD)
+   Roman Plaster • Copper Patina • Suite Murals • Coffeehouse + Apothecary Tiles
 
-/* =========================
-   RESET / BASE
-========================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+   - Coffeehouse menus + Apothecary menus share the same parchment + medieval system
+   - Coffeehouse accordion rules are SCOPED so they cannot break Apothecary
+========================================= */
+
+/* ---------- RESET ---------- */
+*{ box-sizing: border-box; }
+html, body{ margin: 0; padding: 0; }
+img{ max-width: 100%; height: auto; display: block; }
+a{ color: inherit; text-decoration: none; }
+
+/* ---------- TOKENS ---------- */
+:root{
+  --bg: #0b0b0c;
+
+  --ink: rgba(245,245,240,0.92);
+  --muted: rgba(245,245,240,0.72);
+
+  --panel: rgba(10,12,14,0.55);
+  --line: rgba(255,255,255,0.08);
+
+  --copper-1: #c77a4a;
+  --copper-2: #e0a06a;
+  --copper-3: #b56b3d;
+
+  /* Tile image map (root-safe) */
+  --tile-morning:   url("/assets/morning-ritual.jpg");
+  --tile-afternoon: url("/assets/afternoon-gatherings.jpg");
+  --tile-evening:   url("/assets/evening-tavern.jpg");
+
+  /* Parchment — single source of truth */
+  --parchment-img: url("assets/parchment-light.png");
+  --parchment-base: #e6d7bb;
+
+  --parchment-ink: rgba(40,30,20,0.92);
+  --parchment-muted: rgba(60,45,30,0.85);
+
+  /* Medieval ink lines */
+  --ink-line: rgba(90,65,40,0.18);
+  --ink-line-strong: rgba(70,50,30,0.32);
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+/* ---------- BASE ---------- */
+html{ background: var(--bg); }
+
+body{
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--ink);
+  line-height: 1.55;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* =========================
-   BODY / ATMOSPHERE
-========================= */
-body {
-  font-family: "Cormorant Garamond", serif;
-  color: #e6e2dc;
-  line-height: 1.6;
-
-  /* subtle ambient firelight */
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%),
-    #0e0e0e;
+/* ---------- TYPOGRAPHY ---------- */
+h1, h2, h3{
+  margin: 0 0 0.6rem 0;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+h1{
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-/* =========================
-   LAYOUT
-========================= */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.25rem;
+h2{
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
-h1, h2, h3 {
-  letter-spacing: 0.08em;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+h3{ font-size: 1.3rem; }
+
+p{
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.25);
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
+/* ---------- ROMAN PLASTER WALL ---------- */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 
-h2 {
-  font-size: 1.75rem;
-  margin-bottom: 0.75rem;
-}
+  background-image: url("assets/roman-plaster-dark.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-p {
-  max-width: 720px;
   opacity: 0.92;
 }
 
-/* =========================
-   HEADER / BRAND
-========================= */
-.siteHeader {
-  background: rgba(14,14,14,0.85);
-  backdrop-filter: blur(2px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 50% 15%, rgba(255,245,225,0.04), transparent 60%),
+    radial-gradient(circle at 80% 25%, rgba(255,255,255,0.025), transparent 65%),
+    radial-gradient(circle at 50% 90%, rgba(0,0,0,0.35), transparent 70%),
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 42%, rgba(0,0,0,0.45) 100%);
 }
 
-.headerInner {
+/* Content above wall */
+body > *{
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- LAYOUT ---------- */
+.container{
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+.section{ padding: 2.5rem 0 2.8rem; }
+.section.tight{ padding-top: 1.6rem; }
+
+/* ---------- HEADER / NAV ---------- */
+.siteHeader{ padding: 1.2rem 0 0.6rem; }
+
+.headerInner{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
-.brand {
-  display: flex;
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 0.85rem;
+}
+
+.brand img{
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+}
+
+.brandName{ font-size: 1.25rem; }
+
+.brandSub{
+  font-size: 0.92rem;
+  color: rgba(245,245,240,0.65);
+}
+
+/* ---------- NAV BUTTONS (UNIFIED) ---------- */
+.links{
+  display:flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem;
 }
 
-.brand img {
-  height: 48px;
+.links a{
+  position: relative;
+  display:inline-block;
+  padding: 0.45rem 1.05rem;
+
+  border-radius: 6px;
+  font-size: 0.85rem;
+
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-shadow:
+    0.55px 0 0 currentColor,
+   -0.55px 0 0 currentColor;
+
+  color: rgba(20,10,6,0.92);
+  background: linear-gradient(135deg, var(--copper-1), var(--copper-2), var(--copper-3));
+  border: 1px solid rgba(0,0,0,0.25);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    inset 0 0 0 1px rgba(80,50,30,0.35),
+    inset 0 -2px 4px rgba(90,60,40,0.25),
+    0 8px 18px rgba(0,0,0,0.35);
+
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
 }
 
-.brandText {
+.links a::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: inherit;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 0% 0%, rgba(90,120,100,0.12), transparent 35%),
+    radial-gradient(circle at 100% 100%, rgba(90,120,100,0.10), transparent 40%);
+
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
+}
+
+.links a:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+.links a.active{
+  outline: 1px solid rgba(255,210,160,0.5);
+}
+
+/* ---------- BUTTONS ---------- */
+.actions{
+  display:flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+
+.button{
+  display:inline-block;
+  padding: 0.75rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 0.9rem;
+  color: rgba(20,10,6,0.92);
+  background: linear-gradient(135deg, var(--copper-1), var(--copper-2), var(--copper-3));
+  border: 1px solid rgba(0,0,0,0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 10px 22px rgba(0,0,0,0.35);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.button:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.button.ghost{
+  color: rgba(245,245,240,0.9);
+  background: rgba(10,12,14,0.35);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position: relative;
+  padding: 3.4rem 0 3.2rem;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-image: url("assets/hero-home.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  filter: contrast(1.08) saturate(1.05) brightness(0.9);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255,230,190,0.08), transparent 55%),
+    linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
+}
+
+.hero .container{ position: relative; z-index: 2; }
+
+/* ---------- GRID / CARDS ---------- */
+.grid,
+.cardGrid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+@media (max-width: 980px){
+  .grid,
+  .cardGrid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px){
+  .grid,
+  .cardGrid{ grid-template-columns: 1fr; }
+  .headerInner{ flex-direction: column; align-items: flex-start; }
+}
+
+/* ---------- CARDS ---------- */
+.card{
+  position: relative;
+  overflow: hidden;
+
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.6rem 1.6rem 1.4rem;
+  box-shadow:
+    0 18px 30px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+/* If a card has a background image (data-bg or inline background-image), enforce true tile behavior */
+.card[data-bg],
+.card[style*="background-image"]{
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* ---------- UNIVERSAL HOVER ---------- */
+.card,
+.feature-card,
+.room-card,
+.apothTile,
+.menuTile{
+  transform: translateZ(0);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+}
+
+.card:hover,
+.feature-card:hover,
+.room-card:hover,
+.apothTile:hover,
+.menuTile:hover{
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+/* =========================
+   IMAGE TILE SYSTEMS
+========================= */
+
+/* ---- Menu tiles (Coffeehouse category tiles) ---- */
+.menuTile{
+  position: relative;
+  overflow: hidden;
+
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+
+  min-height: 165px;
+
   display: flex;
   flex-direction: column;
-}
+  justify-content: flex-end;
 
-.brandName {
-  font-size: 1.25rem;
-}
-
-.brandSub {
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-/* =========================
-   🔶 COPPER NAV BUTTONS
-========================= */
-nav.links {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.navBtn,
-.button {
-  background:
-    linear-gradient(
-      135deg,
-      #c27a3a 0%,
-      #b36a2e 40%,
-      #8b4d1f 75%,
-      #d08b4c 100%
-    );
-  color: #1a1209;
-  border: 1.5px solid #7a421a;
-
-  /* forged, softened edges */
-  border-radius: 6px;
-
-  padding: 0.55rem 1rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-
-  display: inline-block;
   cursor: pointer;
+  text-align: center;
+}
 
+.menuTile::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.55);
+  z-index:0;
+  transition: background 0.35s ease;
+}
+
+.menuTile > *{ position: relative; z-index: 1; }
+.menuTile:hover::before{ background: rgba(0,0,0,0.45); }
+
+/* ---- Feature cards (Homepage tiles + dayparts) ---- */
+.feature-card{
+  position: relative;
+  overflow: hidden;
+  min-height: 170px;
+}
+
+.feature-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.30;
+  filter: saturate(1.0) contrast(1.05) brightness(0.90) blur(0.2px);
+}
+
+.feature-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+
+  background:
+    radial-gradient(circle at top left,
+      rgba(255,255,255,0.06),
+      rgba(0,0,0,0.45) 60%,
+      rgba(0,0,0,0.62)
+    );
+  transition: background 0.35s ease;
+}
+
+.feature-card:hover::after{
+  background:
+    radial-gradient(circle at top left,
+      rgba(255,255,255,0.07),
+      rgba(0,0,0,0.38) 60%,
+      rgba(0,0,0,0.58)
+    );
+}
+
+.feature-card > *{ position: relative; z-index: 2; }
+
+/* Homepage tile image map */
+.feature-card.suites::before      { background-image: url("assets/rooms/stag-king.jpeg"); }
+.feature-card.coffeehouse::before { background-image: url("assets/evening-tavern.jpg"); }
+.feature-card.apothecary::before  { background-image: url("assets/heartstrings-apothecary.jpg"); }
+
+/* Coffeehouse daypart tiles */
+.feature-card.morning::before   { background-image: var(--tile-morning), url("assets/morning-ritual.jpg"); }
+.feature-card.afternoon::before { background-image: var(--tile-afternoon), url("assets/afternoon-gatherings.jpg"); }
+.feature-card.evening::before   { background-image: var(--tile-evening), url("assets/evening-tavern.jpg"); }
+
+.feature-card.evening::before{
+  opacity: 0.18;
+  filter: saturate(1.0) contrast(1.05) brightness(0.80) blur(0.2px);
+}
+
+/* ---- Room cards ---- */
+.room-card{
+  position: relative;
+  overflow: hidden;
+}
+
+.room-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.30;
+  filter: saturate(1) contrast(1.05) brightness(0.92) blur(0.2px);
+}
+
+.room-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+
+  background:
+    radial-gradient(circle at top left,
+      rgba(255,255,255,0.06),
+      rgba(0,0,0,0.45) 55%,
+      rgba(0,0,0,0.62)
+    );
+  transition: background 0.35s ease;
+}
+
+.room-card:hover::after{
+  background:
+    radial-gradient(circle at top left,
+      rgba(255,255,255,0.07),
+      rgba(0,0,0,0.38) 60%,
+      rgba(0,0,0,0.58)
+    );
+}
+
+.room-card > *{ position: relative; z-index: 2; }
+
+/* Room image map */
+.room-card.stag-king::before     { background-image: url("assets/rooms/stag-king.jpeg"); }
+.room-card.alchemist::before     { background-image: url("assets/rooms/alchemist.jpeg"); }
+.room-card.green-witch::before   { background-image: url("assets/rooms/green-witch.jpg"); }
+.room-card.siren::before         { background-image: url("assets/rooms/siren.jpeg"); }
+.room-card.dragon::before        { background-image: url("assets/rooms/dragon.jpeg"); }
+.room-card.bards-hollow::before  { background-image: url("assets/rooms/bards-hollow.jpg"); }
+
+/* ---- Apothecary category tiles ---- */
+.apothTile{
+  position: relative;
+  overflow: hidden;
+
+  background-color: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.6rem 1.6rem 1.4rem;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.25),
-    0 3px 10px rgba(0,0,0,0.35);
+    0 18px 30px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
 
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    filter 0.2s ease;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
 }
 
-/* Hover = warmth */
-.navBtn:hover,
-.button:hover {
-  filter: brightness(1.08);
+.apothTile::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.55);
+  z-index:0;
+  transition: background 0.35s ease;
 }
 
-/* Active = weight */
-.navBtn:active,
-.button:active {
-  transform: translateY(1px);
+.apothTile > *{ position: relative; z-index: 1; }
+.apothTile:hover::before{ background: rgba(0,0,0,0.45); }
+
+.tarot-tile{
   box-shadow:
-    inset 0 2px 4px rgba(0,0,0,0.35),
-    0 2px 6px rgba(0,0,0,0.25);
+    inset 0 0 0 1px rgba(218,185,120,0.35),
+    0 18px 30px rgba(0,0,0,0.25);
 }
 
-/* Primary emphasis */
-.navBtn.primary {
-  padding: 0.65rem 1.15rem;
-  font-weight: 600;
+.tarot-tile:hover{
+  box-shadow:
+    inset 0 0 0 1px rgba(218,185,120,0.6),
+    0 14px 36px rgba(0,0,0,0.55);
 }
 
-/* =========================
-   SECTIONS / RHYTHM
-========================= */
-section {
-  padding: 4rem 0;
+.small{
+  font-size: 0.95rem;
+  color: rgba(245,245,240,0.70);
 }
 
-section:not(.hero) {
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
+/* =========================================
+   APOTHECARY — PHILOSOPHY TILES (data-bg)
+========================================= */
+.card.philosophyTile{
+  position: relative;
+  overflow: hidden;
 
-/* =========================
-   HERO
-========================= */
-.hero {
-  padding: 5rem 0 6rem;
-}
+  background: transparent !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 
-.hero .eyebrow {
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  opacity: 0.75;
-  margin-bottom: 1rem;
-}
+  min-height: 300px !important;
 
-.heroText {
-  margin: 1.25rem 0 2rem;
-}
-
-/* =========================
-   CARDS / DEPTH
-========================= */
-.cardGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 1.5rem;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-
-.card h3 {
-  margin-top: 0;
-}
-
-/* =========================
-   FOOTER
-========================= */
-.siteFooter {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 2.5rem 0;
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 800px) {
-  nav.links {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-}
-.actions {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  filter: brightness(1.12) contrast(1.10) saturate(1.05);
+
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.card.philosophyTile::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.48),
+    rgba(0,0,0,0.08)
+  );
+  transition: background 0.35s ease;
+}
+
+.card.philosophyTile > *{ position: relative; z-index: 1; }
+
+.card.philosophyTile:hover::before{
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.40),
+    rgba(0,0,0,0.06)
+  );
+}
+
+.card.philosophyTile h3{ color: rgba(245,245,240,0.96) !important; }
+.card.philosophyTile p { color: rgba(245,245,240,0.82) !important; }
+
+/* =========================================
+   UNIFIED — PARCHMENT PANEL (Coffeehouse + Apothecary)
+========================================= */
+.menuSection.open .menuList,
+.apothItem.open .apothMenu{
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 18px;
+  padding: 30px 26px;
+  margin-top: 18px;
+
+  background-color: var(--parchment-base);
+  background-image: var(--parchment-img);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border: 1px solid rgba(70,50,30,0.22);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.38),
+    inset 0 0 0 1px rgba(60,40,25,0.18);
+
+  backdrop-filter: none !important;
+}
+
+/* Soft inner vignette */
+.menuSection.open .menuList::before,
+.apothItem.open .apothMenu::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: 18px;
+  pointer-events:none;
+  box-shadow:
+    inset 0 0 80px rgba(0,0,0,0.12),
+    inset 0 0 0 1px rgba(255,255,255,0.20);
+}
+
+/* Ink rule line */
+.menuSection.open .menuList::after,
+.apothItem.open .apothMenu::after{
+  content:"";
+  position:absolute;
+  left: 18px;
+  right: 18px;
+  top: 18px;
+  height: 1px;
+  background: var(--ink-line);
+  pointer-events:none;
+}
+
+/* =========================================
+   COFFEEHOUSE — MENU WRAP + ACCORDION (SCOPED)
+========================================= */
+.menuWrap{
+  width: min(980px, 92vw);
+  margin: 26px auto 0;
+  padding: 24px 22px;
+
+  border-radius: 18px;
+  border: 1px solid rgba(245,245,240,0.12);
+
+  background: rgba(0,0,0,0.14);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.28),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+.menuWrap .menuSection{ margin-top: 26px; }
+
+.menuWrap .menuSection,
+.menuWrap .menuHead,
+.menuWrap .menuMeta,
+.menuWrap .menuList,
+.menuWrap .menuItem,
+.menuWrap .menuDesc,
+.menuWrap .menuNudge{
+  text-align: center;
+}
+
+/* Accordion core (SCOPED) */
+.menuWrap .menuHead,
+.menuWrap .menuList,
+.menuWrap .menuNudge{
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.45s ease, opacity 0.25s ease, transform 0.25s ease, padding 0.25s ease;
+}
+
+/* Open state */
+.menuWrap .menuSection.open .menuHead,
+.menuWrap .menuSection.open .menuList,
+.menuWrap .menuSection.open .menuNudge{
+  max-height: 1600px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menuWrap .menuSection.open .menuTile{ margin-bottom: 24px; }
+
+.menuWrap .menuList{
+  display: grid;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.menuWrap .menuItem{
+  border-radius: 14px;
+  padding: 16px 20px;
+  max-width: 620px;
+  margin: 0 auto;
+
+  border: 1px solid rgba(60,40,25,0.18);
+  background: rgba(255,255,255,0.55);
+}
+
+.menuWrap .menuRow{
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
   gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
 }
 
-.button.ghost {
-  background: rgba(255,255,255,0.03);
-  color: #e6e2dc;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+.menuWrap .menuName{
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
+.menuWrap .menuDesc{
+  margin: 0.35rem auto 0;
+  max-width: 520px;
+  opacity: 0.90;
+  line-height: 1.5;
+}
 
+/* Coffeehouse parchment ink colors when open */
+.menuWrap .menuSection.open .menuName,
+.menuWrap .menuSection.open .menuPrice,
+.menuWrap .menuSection.open .menuDesc,
+.menuWrap .menuSection.open .menuMeta,
+.menuWrap .menuSection.open .menuNudge{
+  color: var(--parchment-ink);
+  text-shadow: none;
+}
 
+.menuWrap .menuSection.open .menuDesc,
+.menuWrap .menuSection.open .menuMeta,
+.menuWrap .menuSection.open .menuNudge{
+  color: var(--parchment-muted);
+}
 
+/* =========================================
+   APOTHECARY — CLICK OPEN MENUS (MATCH COFFEEHOUSE)
+========================================= */
+.apothItem{ position: relative; }
+.apothTile .small{ margin-top: 0.6rem; opacity: 0.75; }
+
+.apothMenu{
+  margin-top: 0.9rem;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-6px);
+
+  transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.apothItem.open .apothMenu{
+  max-height: 2000px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.apothMenu .menuList{
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Default plaques */
+.apothMenu .menuItem{
+  border-radius: 14px;
+  padding: 16px 20px;
+  max-width: 620px;
+  margin: 0 auto;
+
+  border: 1px solid rgba(60,40,25,0.18);
+  background: rgba(255,255,255,0.55);
+}
+
+.apothMenu .menuRow{
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* Ink colors on parchment */
+.apothItem.open .apothMenu .menuName,
+.apothItem.open .apothMenu .menuPrice,
+.apothItem.open .apothMenu .menuDesc,
+.apothItem.open .apothMenu .menuNudge{
+  color: var(--parchment-ink);
+  text-shadow: none;
+}
+
+.apothItem.open .apothMenu .menuDesc,
+.apothItem.open .apothMenu .menuNudge{
+  color: var(--parchment-muted);
+}
+
+/* =========================================
+   FINAL OVERRIDE — APOTHECARY MEDIEVAL PLAQUES
+   Targets actual rendered structure
+========================================= */
+.apothItem.open .apothMenu .menuList{
+  display: grid !important;
+  gap: 16px !important;
+}
+
+/* Treat each direct child as a medieval plaque */
+.apothItem.open .apothMenu .menuList > *{
+  position: relative !important;
+  overflow: hidden !important;
+
+  background: rgba(250,245,235,0.55) !important;
+  border-radius: 16px !important;
+
+  border: 1px solid rgba(70,50,30,0.35) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.60),
+    inset 0 0 0 2px rgba(120,90,60,0.12),
+    0 8px 16px rgba(0,0,0,0.22) !important;
+
+  padding: 18px 22px !important;
+  max-width: 620px !important;
+  margin: 0 auto !important;
+}
+
+/* Inner ink line */
+.apothItem.open .apothMenu .menuList > *::before{
+  content:"";
+  position:absolute;
+  inset: 10px;
+  border-radius: 12px;
+  pointer-events:none;
+  border: 1px solid rgba(90,65,40,0.35);
+}
+
+/* Corner rivets */
+.apothItem.open .apothMenu .menuList > *::after{
+  content:"";
+  position:absolute;
+  inset: 0;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 14px 14px,
+      rgba(90,65,40,0.35) 0 2px,
+      transparent 3px),
+    radial-gradient(circle at calc(100% - 14px) 14px,
+      rgba(90,65,40,0.35) 0 2px,
+      transparent 3px),
+    radial-gradient(circle at 14px calc(100% - 14px),
+      rgba(90,65,40,0.35) 0 2px,
+      transparent 3px),
+    radial-gradient(circle at calc(100% - 14px) calc(100% - 14px),
+      rgba(90,65,40,0.35) 0 2px,
+      transparent 3px);
+}
+
+/* Absolute authority: ink always dark inside apothecary menu */
+.apothItem.open .apothMenu,
+.apothItem.open .apothMenu *{
+  color: rgba(45,30,18,0.95) !important;
+  text-shadow: none !important;
+}
+
+/* =========================================
+   POLICIES TILE – FINAL DARKENING PASS
+   (Authoritative override)
+========================================= */
+.card[data-bg]::before,
+.card[style*="background-image"]::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: inherit;
+  z-index:0;
+  pointer-events:none;
+
+  /* Heavy cinematic vignette */
+  background:
+    radial-gradient(ellipse at center,
+      rgba(0,0,0,0.45) 0%,
+      rgba(0,0,0,0.78) 55%,
+      rgba(0,0,0,0.95) 100%
+    ) !important;
+}
+
+/* Ensure text sits above vignette */
+.card[data-bg] > *,
+.card[style*="background-image"] > *{
+  position: relative;
+  z-index: 1;
+}
+
+.parchmentFrame { position: relative; z-index: 0; }
+.parchmentFrame::before,
+.parchmentFrame::after { pointer-events: none; }
+
+.menuTile { position: relative; z-index: 1; pointer-events: auto; }
+
+/* =========================================
+   COFFEEHOUSE — EMERGENCY ACCORDION OVERRIDES
+   (Restores click + open behavior no matter what)
+========================================= */
+
+/* 1) Guarantee the menu sits above any texture/overlays */
+.menuWrap{
+  position: relative;
+  z-index: 10;
+}
+
+.menuWrap .menuTile{
+  position: relative;
+  z-index: 20;
+  pointer-events: auto !important;
+}
+
+/* 2) If ANY overlay exists inside parchmentFrame, make it ignore clicks */
+.parchmentFrame::before,
+.parchmentFrame::after{
+  pointer-events: none !important;
+}
+
+/* 3) Force accordion closed state */
+.menuWrap .menuHead,
+.menuWrap .menuList,
+.menuWrap .menuNudge{
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  transform: translateY(-6px) !important;
+  pointer-events: none !important;
+}
+
+/* 4) Force accordion open state */
+.menuWrap .menuSection.open .menuHead,
+.menuWrap .menuSection.open .menuList,
+.menuWrap .menuSection.open .menuNudge{
+  max-height: 4000px !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+/* 5) Restore parchment padding when open (your earlier rule gets overridden) */
+.menuWrap .menuSection.open .menuList{
+  padding: 30px 26px !important;
+  margin-top: 18px !important;
+}
+
+/* =========================================
+   MEDIEVAL WRAP — COFFEEHOUSE + APOTHECARY
+   (Visible parchment frame + ink border system)
+========================================= */
+
+.medieval{
+  position: relative;
+  padding: 28px 0 42px;
+}
+
+/* The actual parchment “page” */
+.parchmentFrame{
+  width: min(1120px, 94vw);
+  margin: 18px auto 36px;
+
+  border-radius: 22px;
+  border: 1px solid rgba(70,50,30,0.30);
+
+  background-color: var(--parchment-base);
+  background-image: var(--parchment-img);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  box-shadow:
+    0 28px 70px rgba(0,0,0,0.55),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+
+  overflow: hidden;
+}
+
+/* Inner vignette + ink edge line (doesn't block clicks) */
+.parchmentFrame::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.22) 100%);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(90,65,40,0.18),
+    inset 0 0 120px rgba(0,0,0,0.14);
+}
+
+/* Make text inside parchment read like parchment (not “night mode”) */
+.parchmentFrame h1,
+.parchmentFrame h2,
+.parchmentFrame h3{
+  color: rgba(40,30,20,0.92);
+  text-shadow: none;
+}
+
+.parchmentFrame p{
+  color: rgba(60,45,30,0.85);
+  text-shadow: none;
+}
+
+/* Keep your existing sections from touching the edges */
+.parchmentFrame .section{
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+/* Optional: keep HERO readable inside parchment */
+.parchmentFrame .hero{
+  border-top: none;
+  border-bottom: 1px solid rgba(70,50,30,0.20);
+}
+/* =========================================
+   MEDIEVAL WRAP — DARK TAVERN PANEL (CORRECT)
+   Keeps “medieval frame” without turning the page into parchment
+========================================= */
+
+.medieval{
+  position: relative;
+  padding: 22px 0 36px;
+}
+
+/* Dark frame panel (not parchment) */
+.parchmentFrame{
+  width: min(1120px, 94vw);
+  margin: 18px auto 36px;
+
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.10);
+
+  background: rgba(10,12,14,0.55);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,0.55),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+
+  overflow: hidden;
+}
+
+/* Subtle inner vignette + “ink” edge line (no click blocking) */
+.parchmentFrame::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    radial-gradient(ellipse at center,
+      rgba(0,0,0,0.00) 45%,
+      rgba(0,0,0,0.35) 100%);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(90,65,40,0.12);
+}
+
+/* IMPORTANT: undo the parchment-ink override (restore your original dark theme text) */
+.parchmentFrame h1,
+.parchmentFrame h2,
+.parchmentFrame h3,
+.parchmentFrame p{
+  color: revert;
+  text-shadow: revert;
+}
+
+/* Keep spacing off the edges */
+.parchmentFrame .section{
+  padding-left: 18px;
+  padding-right: 18px;
+}

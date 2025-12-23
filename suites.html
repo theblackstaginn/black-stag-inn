@@ -1,121 +1,94 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Suites | The Black Stag Inn</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore the themed suites at The Black Stag Inn in Dahlonega, Georgia. Six immersive rooms designed for comfort, calm, and atmosphere.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Black Stag Inn | Suites</title>
+  <meta name="description" content="Explore immersive suites at The Black Stag Inn in Dahlonega, Georgia." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER / NAV
-  ========================== -->
   <header class="siteHeader">
     <div class="container headerInner">
 
-      <a href="index.html" class="brand">
-        <img src="assets/black-stag-logo.jpg" alt="The Black Stag Inn">
+      <a class="brand" href="index.html">
+        <img src="assets/black-stag-logo.jpg" alt="The Black Stag Inn logo" />
         <div class="brandText">
           <span class="brandName">The Black Stag Inn</span>
           <span class="brandSub">Dahlonega, Georgia</span>
         </div>
       </a>
 
-      <nav id="navLinks" class="links" aria-label="Primary navigation">
-  <a class="navBtn" href="index.html">Home</a>
-  <a class="navBtn" href="suites.html">Suites</a>
-  <a class="navBtn" href="coffeehouse.html">Coffeehouse</a>
-  <a class="navBtn" href="apothecary.html">Apothecary</a>
-  <a class="navBtn" href="policies.html">Policies</a>
-  <a class="navBtn" href="contact.html">Contact</a>
-  <a class="navBtn primary" href="contact.html">Check Availability</a>
-</nav>
-
+      <nav class="links" aria-label="Primary navigation">
+        <a class="navBtn" href="index.html">Home</a>
+        <a class="navBtn active" href="suites.html">Suites</a>
+        <a class="navBtn" href="coffeehouse.html">Coffeehouse</a>
+        <a class="navBtn" href="apothecary.html">Apothecary</a>
+        <a class="navBtn" href="policies.html">Policies</a>
+        <a class="navBtn" href="contact.html">Contact</a>
+        <a class="navBtn cta" href="contact.html">Check Availability</a>
+      </nav>
 
     </div>
   </header>
 
   <main>
 
-    <!-- =========================
-         HERO
-    ========================== -->
-    <section class="hero">
+    <section class="section tight">
       <div class="container">
-
-        <p class="eyebrow">Immersive Suites • Calm Comfort • Handcrafted Detail</p>
-
-        <h1>Suites that feel transported.</h1>
-
-        <p class="heroText">
-          Each room at The Black Stag Inn is themed like a chapter—designed to feel richly atmospheric
-          without sacrificing comfort. Every suite is quiet, restful, and intentional, built for deep sleep,
-          slow mornings, and a little wonder.
-        </p>
-
-        <div class="actions">
-          <a class="button" href="contact.html">Check Availability</a>
-          <a class="button ghost" href="contact.html">Ask a Question</a>
-        </div>
-
+        <div class="heroKicker">Immersive Suites • Dahlonega, Georgia</div>
+        <h1>Choose the room that matches your mood.</h1>
+        <p class="lead">Six themed rooms crafted to feel transported—without gimmicks. Comfort first. Atmosphere always.</p>
       </div>
     </section>
 
-    <!-- =========================
-         SUITES GRID
-    ========================== -->
     <section class="section">
       <div class="container">
 
-        <h2>Our Suites</h2>
-        <p>
-          Six themed rooms crafted to feel transported—without gimmicks. Comfort first. Atmosphere always.
-        </p>
+        <div class="grid">
 
-        <div class="cardGrid">
-
-          <div class="card">
+          <div class="card room-card stag-king">
             <h3>Stag King’s Keep</h3>
             <p>Regal, grounded, and quietly powerful—like a private chamber in an old fortress.</p>
             <p><strong>Vibe:</strong> dark wood, candlelight warmth, iron-and-leather mood.</p>
           </div>
 
-          <div class="card">
+          <div class="card room-card alchemist">
             <h3>Alchemist’s Tower</h3>
             <p>Books, bottles, brass tones, and soft light—mysterious without being heavy.</p>
             <p><strong>Vibe:</strong> apothecary curios, old notes, warm amber glow.</p>
           </div>
 
-          <div class="card">
+          <!-- No image yet, so leave it without a room class -->
+          <div class="card room-card bards-hollow">
             <h3>Bard’s Hollow</h3>
-            <p>A hearth-feel suite with story energy—soft textures, calm shadows, lived-in comfort.</p>
-            <p><strong>Vibe:</strong> tavern poetry, linen, warm lamplight.</p>
+            <p>A hearth-feel suite with tavern-poetry comfort—warm, familiar, quietly enchanted.</p>
+            <p><strong>Vibe:</strong> worn textures, calm shadow, lamplight.</p>
           </div>
 
-          <div class="card">
+          <div class="card room-card green-witch">
             <h3>Green Witch’s Haven</h3>
             <p>Earthy, restorative, and botanical—like sleeping inside a quiet garden spell.</p>
             <p><strong>Vibe:</strong> herb tones, natural textures, gentle green mood.</p>
           </div>
 
-          <div class="card">
+          <div class="card room-card siren">
             <h3>Siren’s Cabin</h3>
             <p>Moody and enchanting—an intimate refuge with ocean-night energy.</p>
             <p><strong>Vibe:</strong> deep blues, soft shimmer, calm and mysterious.</p>
           </div>
 
-          <div class="card">
+          <div class="card room-card dragon">
             <h3>Dragon’s Den</h3>
-            <p>Bold, warm, and dramatic—designed to feel like treasure guarded in velvet shadow.</p>
-            <p><strong>Vibe:</strong> rich tones, metallic accents, strong atmosphere.</p>
+            <p>Bold, warm, and dramatic—built to feel like treasure guarded by firelight.</p>
+            <p><strong>Vibe:</strong> rich tones, metallic accents, cinematic atmosphere.</p>
           </div>
 
         </div>
@@ -123,36 +96,16 @@
       </div>
     </section>
 
-    <!-- =========================
-         BOOKING NOTE / CTA
-    ========================== -->
     <section class="section">
       <div class="container">
-
-        <h2>Booking & Questions</h2>
-        <p>
-          Want help choosing the right suite? Reach out and we’ll match you to the room that fits your trip—quiet retreat,
-          romantic weekend, or a stay that feels like stepping into a story.
-        </p>
-
-        <div class="actions">
-          <a class="button" href="contact.html">Check Availability</a>
-          <a class="button ghost" href="contact.html">Contact Us</a>
-        </div>
-
+        <h2>Booking &amp; Questions</h2>
+        <p class="small">Want help choosing the right suite? Reach out and we’ll match you to the room that fits your trip—quiet retreat, romantic weekend, or a stay that feels like stepping into a story.</p>
+        <a class="btn" href="contact.html">Ask About the Suites</a>
       </div>
     </section>
 
   </main>
 
-  <footer class="siteFooter">
-    <div class="container">
-      <p>© The Black Stag Inn · Dahlonega, Georgia</p>
-    </div>
-  </footer>
-
 </body>
 </html>
-
-
 

@@ -30,15 +30,14 @@
       </a>
 
       <nav id="navLinks" class="links" aria-label="Primary navigation">
-  <a class="navBtn" href="index.html">Home</a>
-  <a class="navBtn" href="suites.html">Suites</a>
-  <a class="navBtn" href="coffeehouse.html">Coffeehouse</a>
-  <a class="navBtn" href="apothecary.html">Apothecary</a>
-  <a class="navBtn" href="policies.html">Policies</a>
-  <a class="navBtn" href="contact.html">Contact</a>
-  <a class="navBtn primary" href="contact.html">Check Availability</a>
-</nav>
-
+        <a class="navBtn" href="index.html">Home</a>
+        <a class="navBtn" href="suites.html">Suites</a>
+        <a class="navBtn" href="coffeehouse.html">Coffeehouse</a>
+        <a class="navBtn" href="apothecary.html">Apothecary</a>
+        <a class="navBtn active" href="policies.html" aria-current="page">Policies</a>
+        <a class="navBtn" href="contact.html">Contact</a>
+        <a class="navBtn primary" href="contact.html">Check Availability</a>
+      </nav>
 
     </div>
   </header>
@@ -69,7 +68,7 @@
     </section>
 
     <!-- =========================
-         GENERAL POLICIES
+         CHECK-IN / OUT
     ========================== -->
     <section class="section">
       <div class="container">
@@ -77,19 +76,19 @@
         <h2>Check-In & Check-Out</h2>
 
         <div class="cardGrid">
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/check-in.png">
             <h3>Check-In</h3>
             <p>Standard check-in time will be provided with your booking confirmation.</p>
             <p>If you need an early arrival, reach out—when possible, we’ll accommodate.</p>
           </div>
 
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/check-out.png">
             <h3>Check-Out</h3>
             <p>Standard check-out time will be provided with your booking confirmation.</p>
             <p>Late check-out requests may be possible depending on same-day turnover.</p>
           </div>
 
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/quiet-hours.png">
             <h3>Quiet Hours</h3>
             <p>This is a calm property designed for rest. Quiet hours are observed in the evenings.</p>
             <p>Please be mindful of other guests, especially in shared areas.</p>
@@ -112,19 +111,19 @@
         </p>
 
         <div class="cardGrid">
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/dogs-only.png">
             <h3>Dogs Only</h3>
             <p><strong>Max 1 dog</strong>, under <strong>50 lbs</strong>.</p>
             <p>Pets must be disclosed and approved during booking.</p>
           </div>
 
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/fees-hold.png">
             <h3>Fees & Hold</h3>
             <p><strong>$100 pet fee</strong> per stay.</p>
             <p><strong>$250 refundable damage hold</strong> (refunded if no damage/excess cleaning is required).</p>
           </div>
 
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/house-rules.png">
             <h3>House Rules</h3>
             <p>Dogs must be <strong>leashed in common areas</strong>.</p>
             <p>No pets allowed in the <strong>coffeehouse or dining areas</strong>.</p>
@@ -144,19 +143,19 @@
         <h2>Cancellations & Damages</h2>
 
         <div class="cardGrid">
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/cancellations.png">
             <h3>Cancellations</h3>
             <p>Cancellation terms are provided at booking and may vary by season and room type.</p>
             <p>If plans change, contact us as early as possible—we’ll work with you when we can.</p>
           </div>
 
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/no-smoking.png">
             <h3>Smoking</h3>
             <p>Smoking is not permitted inside the Inn.</p>
             <p>Any smoke-related deep cleaning fees will be charged if required.</p>
           </div>
 
-          <div class="card">
+          <div class="card policyTile" data-bg="assets/damage-cleaning.png">
             <h3>Damage / Excess Cleaning</h3>
             <p>Please treat the Inn with care. We’re a handcrafted space with custom finishes.</p>
             <p>Damage or excessive cleaning may result in additional charges.</p>
@@ -193,8 +192,24 @@
     </div>
   </footer>
 
+  <!-- Apply backgrounds for tiles (data-bg) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-bg]').forEach(el => {
+        const bg = el.getAttribute('data-bg');
+        if (!bg) return;
+
+        // Set image
+        el.style.backgroundImage = `url('${bg}')`;
+
+        // Force "cover" behavior so it never tiles/repeats
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+        el.style.backgroundRepeat = 'no-repeat';
+      });
+    });
+  </script>
+
 </body>
 </html>
-
-
 
